@@ -9,7 +9,7 @@
         echo $this->Form->input('username');
         echo $this->Form->input('password');
         echo $this->Form->input('password',array ('label' => 'Confirm password'));
-        echo $this->Form->input('mail');
+        echo $this->Form->input('mail',array('type' => 'email'));
         ?>
     </fieldset>
 <?php echo $this->Form->end(__('Sign up'));?>
