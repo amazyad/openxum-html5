@@ -76,10 +76,10 @@ class DATABASE_CONFIG {
 	var $default = array(
 		'datasource' => 'Database/Mysql',
 		'persistent' => false,
-		'host' => 'localhost',
-		'login' => 'root',
-        'password' => 'toto',
-		'database' => 'openxum',
+		'host' => '192.168.22.251',
+		'login' => 'hbroyon',
+        'password' => '29121992',
+		'database' => 'hbroyon',
 		'prefix' => '',
 		//'encoding' => 'utf8',
 	);
@@ -87,10 +87,10 @@ class DATABASE_CONFIG {
 	var $test = array(
 		'database' => 'Database/Mysql',
 		'persistent' => false,
-		'host' => 'localhost',
-		'login' => 'root',
-		'password' => 'toto',
-		'database' => 'openxum_test',
+		'host' => '192.168.22.251',
+		'login' => 'hbroyon',
+		'password' => '29121992',
+		'database' => 'hbroyon',
 		'prefix' => '',
 		//'encoding' => 'utf8',
 	);
