@@ -74,23 +74,18 @@
 class DATABASE_CONFIG {
 
 	var $default = array(
-		'datasource' => 'Database/Mysql',
-		'persistent' => false,
-		'host' => 'localhost',
-		'login' => 'root',
-        'password' => 'toto',
-		'database' => 'openxum',
+		'datasource' => 'Database/Sqlite',
+		'driver' => 'sqlite',
+        'persistent' => false,
+		'database' => 'app/webroot/db/openxum.db',
 		'prefix' => '',
 		//'encoding' => 'utf8',
 	);
 
 	var $test = array(
-		'database' => 'Database/Mysql',
+		'database' => 'Database/Sqlite',
 		'persistent' => false,
-		'host' => 'localhost',
-		'login' => 'root',
-		'password' => 'toto',
-		'database' => 'openxum_test',
+		'database' => 'app/webroot/db/openxum_test.db',
 		'prefix' => '',
 		//'encoding' => 'utf8',
 	);
