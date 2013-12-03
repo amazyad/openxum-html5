@@ -54,8 +54,11 @@ class UsersController extends AppController
     {
         if ($this->request->is('post')) {
             $this->User->create();
+            $this->request->data["User"]["user_id"]=2;
+            $this->request->data["User"]["role"]='student';
             if ($this->User->save($this->request->data)) {
                 $this->Session->setFlash(__('L\'utilisateur a été sauvegardé'));
+                return $this->redirect(array('controller' => 'pages', 'action' => 'display', 'home'));
                 return $this->redirect(array('action' => 'index'));
             } else {
                 $this->Session->setFlash(__('L\'utilisateur n\'a pas été sauvegardé. Merci de réessayer.'));
