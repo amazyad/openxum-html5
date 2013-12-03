@@ -102,8 +102,8 @@ class UsersController extends AppController
     public function login()
     {
         if ($this->request->is('post')) {
-            if ($this->Auth->login()) {
-                if (AuthComponent::user('role') === 'student') {
+            if ($this->Auth->login($this->request->data)) {
+                if ($this->Auth->loggedIn()) {
                     return $this->redirect(array('controller' => 'pages', 'action' => 'display', 'home'));
                 }
                 return $this->redirect($this->Auth->redirectUrl());
