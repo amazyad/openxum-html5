@@ -64,7 +64,7 @@
                 <li><a href="#" data-icon="info">Help</a></li>
                 <li>
                     <?php
-                    if (AuthComponent::user('id') != 0) {
+                    if ($loggedIn) {
                         echo $this->Html->link('Logout', array('controller' => 'users', 'action' => 'logout'), array("data-icon" => "check",  "class" => "ui-btn-active")).' '.AuthComponent::user('username');
                     } else {
                         echo $this->Html->link('Sign in', array('controller' => 'users', 'action' => 'login'), array("data-icon" => "check",  "class" => "ui-btn-active"));

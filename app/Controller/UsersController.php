@@ -103,7 +103,7 @@ class UsersController extends AppController
     {
         if ($this->request->is('post')) {
             if ($this->Auth->login($this->request->data)) {
-                if (AuthComponent::user('role') === 'admin') {
+                if ($this->Auth->loggedIn()) {
                     return $this->redirect(array('controller' => 'pages', 'action' => 'display', 'home'));
                 }
                 return $this->redirect($this->Auth->redirectUrl());
