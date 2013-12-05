@@ -4,7 +4,7 @@
     <fieldset>
         <h3>Click on color to create a new game party.</h3>
         <ul data-role="listview" data-inset="true" class="data-split-icon"
-                style="width: 30%; margin-left:auto; margin-right:auto; align:center; text-align:center;">
+                style="width: 100%; margin-left:auto; margin-right:auto; align:center; text-align:center;">
                 <li>
                     <?php
                     echo $this->Html->link('<h2>Black color</h2>',
@@ -22,13 +22,12 @@
 
     <fieldset>
     <h3>List of available game parties.</h3>
-    <table class='tt' id='listplayer'>
+    <table class='tt' id='listparties'>
         <tbody>
             <tr>
-                <td>Player</td>
-                <td>Playing Color</td>
-                <td>Score</td>
-                <td></td>
+                <td>game</td>
+                <td>white user</td>
+                <td>black user</td>
             </tr>
         </tbody>
     </table>
