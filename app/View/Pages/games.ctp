@@ -28,7 +28,7 @@
         <li>
             <?php
             echo $this->Html->link($this->Html->image('yinsh.jpg').'<h2>Yinsh</h2>',
-                array('controller' => 'pages', 'action' => 'display', 'menu', 'game' => 'yinsh'),
+                array('controller' => 'pages', 'action' => 'display', 'choixMode', 'game' => 'yinsh'),
                 array('escape' => false));
             ?>
         <li>
