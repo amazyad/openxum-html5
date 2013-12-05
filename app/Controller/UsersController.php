@@ -28,20 +28,28 @@ class UsersController extends AppController
         parent::beforeFilter();
     }
 
-    public function isAuthorized($user) {
-
-//        if (isset($user['role']) && $user['role'] === 'admin') {
+    public function isAuthorized($user)
+    {
+        if (AuthComponent::user('user_id') != 0 && AuthComponent::user('role') == "admin") {
             return true;
-//        } else { return false; }
+        } else {
+            return false;
+        }
     }
 
-    public function index()
+    public function adminpanel()
+    {
+    }
+
+    public
+    function index()
     {
         $this->User->recursive = 0;
         $this->set('users', $this->paginate());
     }
 
-    public function view($id = null)
+    public
+    function view($id = null)
     {
         $this->User->id = $id;
         if (!$this->User->exists()) {
@@ -50,17 +58,18 @@ class UsersController extends AppController
         $this->set('user', $this->User->read(null, $id));
     }
 
-    public function add()
+    public
+    function add()
     {
         if ($this->request->is('post')) {
-	    $users = $this->User->find('first',
-				       array('order' => array('user_id DESC'),
-					     'fields' => array('user_id')
-					     )
-				       );
-	    $last_user_id = $users['User']['user_id'];
-	    $this->User->create();
-	    $this->request->data["User"]["user_id"] = $last_user_id + 1;
+            $users = $this->User->find('first',
+                array('order' => array('user_id DESC'),
+                    'fields' => array('user_id')
+                )
+            );
+            $last_user_id = $users['User']['user_id'];
+            $this->User->create();
+            $this->request->data["User"]["user_id"] = $last_user_id + 1;
             $this->request->data["User"]["role"] = 'player';
             if ($this->User->save($this->request->data)) {
                 $this->Session->setFlash(__('L\'utilisateur a été sauvegardé'));
@@ -72,7 +81,8 @@ class UsersController extends AppController
         }
     }
 
-    public function edit($id = null)
+    public
+    function edit($id = null)
     {
         $this->User->id = $id;
         if (!$this->User->exists()) {
@@ -91,7 +101,8 @@ class UsersController extends AppController
         }
     }
 
-    public function delete($id = null)
+    public
+    function delete($id = null)
     {
         if (!$this->request->is('post')) {
             throw new MethodNotAllowedException();
@@ -108,15 +119,16 @@ class UsersController extends AppController
         return $this->redirect(array('action' => 'index'));
     }
 
-    public function login()
+    public
+    function login()
     {
         if ($this->request->is('post')) {
             if ($this->Auth->login()) {
                 if ($this->Auth->user('user_id') != 0) {
                     return $this->redirect(array('controller' => 'pages', 'action' => 'display', 'games'));
                 } else {
-		    return $this->redirect($this->Auth->redirectUrl());
-		}
+                    return $this->redirect($this->Auth->redirectUrl());
+                }
             } else {
                 $this->Session->setFlash(__('Login ou mot de passe invalide, réessayer'));
             }
