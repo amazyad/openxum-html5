@@ -24,16 +24,14 @@
     	}
 
     	function analyse(msg){
+    	    var style = (msg['color']=='black') ? "class='black'" : "class='white'";
+    	    var user = msg['user'];
     	    var tr = '';
     	    tr += '<tr id='+msg['user']+'>';
     	    tr += '<td>'+msg['user']+'</td>';
-    	    tr += '<td>'+msg['color']+'</td>';
+    	    tr += '<td '+style+'>'+msg['color']+'</td>';
     	    tr += '<td>500</td>';
-    	    tr += (msg['user'] == localStorage['user']) ? '<td></td>' : '<td><?php
-    	    echo $this->Html->link('Start the party',
-            array('controller' => 'pages', 'action' => 'display', 'yinsh'),
-            array('escape' => false));
-            ?></td>';
+    	    tr += (msg['user'] == localStorage['user']) ? '<td></td>' : '<td><a href="#"><span onClick="start(\''+user+'\')">Start the party.</span></a></td>';
     	    switch(msg['action']){
     	        case 'msg':{
     	            if(localStorage['game']==msg['game'] && !document.getElementById(msg['user'])){
@@ -53,6 +51,9 @@
     	            }
     	        }
                 break;
+                case 'ichallengeyou':{
+    	            alert('hello');
+    	        }
     	    }
     	}
 
@@ -107,6 +108,17 @@ function onopen(){
     payload['color'] = '';
     payload['data'] = '';
     console.log('WHO IS ONLINE?');
+    socket.send(payload);
+}
+
+function start(user){
+    var payload = new Object();
+    console.log('started');
+    payload['action'] = 'ichallengeyou';
+    payload['user'] = localStorage['user'];
+    payload['game'] = localStorage['game'];
+    payload['color'] = '';
+    payload['data'] = user;
     socket.send(payload);
 }
 </script>
