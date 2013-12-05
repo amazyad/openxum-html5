@@ -27,8 +27,13 @@
             ?>
         <li>
             <?php
+            if(AuthComponent::user("user_id"))
             echo $this->Html->link($this->Html->image('yinsh.jpg').'<h2>Yinsh</h2>',
                 array('controller' => 'pages', 'action' => 'display', 'choixMode', 'game' => 'yinsh'),
+                array('escape' => false));
+            else
+            echo $this->Html->link($this->Html->image('yinsh.jpg').'<h2>Yinsh</h2>',
+                array('controller' => 'pages', 'action' => 'display', 'yinsh'),
                 array('escape' => false));
             ?>
         <li>
