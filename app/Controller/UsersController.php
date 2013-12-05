@@ -133,4 +133,12 @@ class UsersController extends AppController
             $this->Session->setFlash(__('Invalid username or password, try again'));
         }
     }
+
+    public function ranking(){
+
+       $this->User->id = $id;
+       $user=$this->User->find('all');
+       $this->set('user', $user);
+
+    }
 }
