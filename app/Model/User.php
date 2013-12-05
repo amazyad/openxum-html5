@@ -40,7 +40,7 @@ class User extends AppModel {
         ),
         'role' => array(
             'valid' => array(
-                'rule' => array('inList', array('admin', 'student', 'professor', 'external', 'manager')),
+                'rule' => array('inList', array('admin', 'player')),
                 'message' => 'Merci de rentrer un rôle valide',
                 'allowEmpty' => false
             )

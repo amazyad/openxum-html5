@@ -26,7 +26,7 @@
         echo $this->Form->input('password2',array ('type' => 'password','label' => 'confirm password', 'onkeyup' => 'verif()'));?>
         <div id = "result"></div>
         <?php
-        echo $this->Form->input('mail', array('type' => 'email'));
+        echo $this->Form->input('email', array('type' => 'email'));
         ?>
     </fieldset>
 <?php echo $this->Form->end(__('Sign up'));?>
