@@ -66,8 +66,10 @@
                 <li><a href="#" data-icon="info">Help</a></li>
                 <li>
                     <?php
-                    if ($loggedIn) {
-                        echo $this->Html->link('Logout '.AuthComponent::user('username'), array('controller' => 'app', 'action' => 'logout'), array("data-icon" => "check",  "class" => "ui-btn-active"));
+                    if (AuthComponent::user('user_id') != 0 && AuthComponent::user('role') == "player") {
+                        echo $this->Html->link('Logout ['.AuthComponent::user('username').']', array('controller' => 'users', 'action' => 'logout'), array("data-icon" => "check",  "class" => "ui-btn-active"));
+                    } elseif(AuthComponent::user('role') == "admin"){
+                        echo $this->Html->link('Logout ['.AuthComponent::user('username').'] (admin)', array('controller' => 'users', 'action' => 'logout'), array("data-icon" => "check",  "class" => "ui-btn-active"));
                     } else {
                         echo $this->Html->link('Sign in', array('controller' => 'users', 'action' => 'login'), array("data-icon" => "check",  "class" => "ui-btn-active"));
                     }
