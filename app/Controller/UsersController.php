@@ -66,11 +66,11 @@ class UsersController extends AppController
                 $this->Session->setFlash(__('L\'utilisateur a été sauvegardé'));
                 return $this->redirect(array('controller' => 'pages', 'action' => 'display', 'home'));
                 return $this->redirect(array('action' => 'index'));
-            } else {
-                $this->Session->setFlash(__('L\'utilisateur n\'a pas été sauvegardé. Merci de réessayer.'));
             }
+            $this->Session->setFlash(__('The user could not be saved . Please, try again . '));
         }
     }
+
 
     public function edit($id = null)
     {
@@ -120,14 +120,15 @@ class UsersController extends AppController
             } else {
                 $this->Session->setFlash(__('Login ou mot de passe invalide, réessayer'));
             }
+            $this->Session->setFlash(__('Invalid username or password, try again'));
         }
     }
-
     public function ranking(){
+               $this->User->id = $id;
+               $user=$this->User->find('all');
+               $this->set('user', $user);
 
-       $this->User->id = $id;
-       $user=$this->User->find('all');
-       $this->set('user', $user);
+            }
 
-    }
+
 }

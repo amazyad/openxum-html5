@@ -1,5 +1,4 @@
 <div data-role="content">
-
 <h1>Classement :</h1>
 <h3>Dvonn</h3>
 Non implementé
@@ -10,30 +9,41 @@ Non implementé
 <h3>Tzaar</h3>
 Non implementé
 <h3>Yinsh</h3>
-Votre ELO :
+<center><u><b>Votre ELO :</u> </b>
 <?php
 $rang=$ranked;
+echo ' ';
 echo $rang;
-echo '</br>';
+echo '</center>';
 echo '</br>';
 ?>
-<u><b>Classement : </b></u>
+<center><u><b>Classement : </b></u></center>
 </br>
+<table class='tt' id='list'>
+<tbody>
+<tr><td>Joueur</td><td>ELO</td></tr>
 <?php
 foreach ($user as $u):
+echo '<tr>';
+echo '<td>';
+echo '<center>';
 echo($u["User"]['username']);
-echo ' : ';
+echo '</center>';
+echo '</td>';
+echo '<td>';
+echo '<center>';
 echo($u["User"]['elo_yinsh']);
-echo '</br>';
+echo '</center>';
+echo '</td>';
+echo '<tr>';
 endforeach;
-unset($u);
 ?>
+</tbody>
+</table>
+
 <h3>Zertz</h3>
 Non implementé
 </div>
-
-
-
 
 
 
