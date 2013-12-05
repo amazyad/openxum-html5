@@ -25,6 +25,7 @@ App::uses('AuthComponent', 'Controller/Component');
 
 class User extends AppModel {
     public $name = 'User';
+    public $primaryKey = 'user_id';
     public $validate = array(
         'username' => array(
             'required' => array(

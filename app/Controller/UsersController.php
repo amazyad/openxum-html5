@@ -23,6 +23,9 @@
 
 class UsersController extends AppController
 {
+    public $uses = array('Partie');
+
+
     public function beforeFilter()
     {
         parent::beforeFilter();
@@ -122,5 +125,10 @@ class UsersController extends AppController
             }
             $this->Session->setFlash(__('Invalid username or password, try again'));
         }
+    }
+
+    public function modeDiff()
+    {
+         $this->set('parties', $this->Partie->find('all',array('conditions' => array('game_id' => 1), 'recursive' => 1)));
     }
 }

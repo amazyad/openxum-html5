@@ -29,6 +29,17 @@
                 <td>white user</td>
                 <td>black user</td>
             </tr>
+            <?php
+                foreach($parties as $part)
+                {
+                    echo "<tr>";
+                    echo "<td> {$part['Partie']['partie_id']} </td>";
+                    echo "<td> {$part['user_white']['username']} </td>";
+                    echo "<td> {$part['user_black']['username']} </td>";
+                    echo "</tr>";
+
+                }
+            ?>
         </tbody>
     </table>
     </fieldset>
@@ -37,5 +48,5 @@
      style="position: absolute; bottom: 0; width: 100%; margin-left:auto; margin-right:auto; align:center; text-align:center;">
     <div data-role="controlgroup" data-type="horizontal">
         <a href="#">About</a>
-    </div>
+ </div>
 </div>
