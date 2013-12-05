@@ -54,14 +54,17 @@ class UsersController extends AppController
     {
         if ($this->request->is('post')) {
             $this->User->create();
+            $this->request->data['User']['role'] = 'student';
+            $this->request->data['User']['user_id'] = 12;
+            print_r($this->request->data);
             if ($this->User->save($this->request->data)) {
-                $this->Session->setFlash(__('L\'utilisateur a été sauvegardé'));
+                $this->Session->setFlash(__('The user has been saved'));
                 return $this->redirect(array('action' => 'index'));
-            } else {
-                $this->Session->setFlash(__('L\'utilisateur n\'a pas été sauvegardé. Merci de réessayer.'));
             }
+            $this->Session->setFlash(__('The user could not be saved . Please, try again . '));
         }
     }
+
 
     public function edit($id = null)
     {
@@ -102,14 +105,13 @@ class UsersController extends AppController
     public function login()
     {
         if ($this->request->is('post')) {
-            if ($this->Auth->login($this->request->data)) {
-                if ($this->Auth->loggedIn()) {
-                    return $this->redirect(array('controller' => 'pages', 'action' => 'display', 'home'));
+            if ($this->Auth->login()) {
+                if (AuthComponent::user('role') === 'student') {
+                    return $this->redirect($this->Auth->redirect());
                 }
                 return $this->redirect($this->Auth->redirectUrl());
-            } else {
-                $this->Session->setFlash(__('Login ou mot de passe invalide, réessayer'));
             }
+            $this->Session->setFlash(__('Invalid username or password, try again'));
         }
     }
 }
