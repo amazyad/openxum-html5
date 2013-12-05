@@ -34,13 +34,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <?php
     echo $this->Html->meta('icon');
-
+    echo $this->Html->css('table');
     echo $this->Html->css('openxum');
     echo $this->Html->css('jquery.mobile.min');
     echo $this->Html->css('jquery.mobile.theme.min');
 
+
     echo $this->Html->script('jquery.min');
     echo $this->Html->script('jquery.mobile.min');
+	echo $this->Html->script('websocket');
 
     echo $scripts_for_layout;
     ?>
@@ -64,8 +66,8 @@
                 <li><a href="#" data-icon="info">Help</a></li>
                 <li>
                     <?php
-                    if (AuthComponent::user('user_id') != 0) {
-                        echo $this->Html->link('Logout ['.AuthComponent::user('username').']', array('controller' => 'users', 'action' => 'logout'), array("data-icon" => "check",  "class" => "ui-btn-active"));
+                    if ($loggedIn) {
+                        echo $this->Html->link('Logout '.AuthComponent::user('username'), array('controller' => 'app', 'action' => 'logout'), array("data-icon" => "check",  "class" => "ui-btn-active"));
                     } else {
                         echo $this->Html->link('Sign in', array('controller' => 'users', 'action' => 'login'), array("data-icon" => "check",  "class" => "ui-btn-active"));
                     }
