@@ -4,7 +4,7 @@
          <li>
              <?php
              echo $this->Html->link($this->Html->image('yinsh.jpg').'<h2>Delayed mode</h2>',
-                 array('controller' => 'pages', 'action' => 'display', 'choixMode', 'game' => 'yinsh'),
+                 array('controller' => 'users', 'action' => 'modeDiff'),
                  array('escape' => false));
              ?>
          <li>
