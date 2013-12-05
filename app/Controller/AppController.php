@@ -37,6 +37,7 @@ class AppController extends Controller
 
     public function beforeFilter() {
         $this->set('loggedIn', $this->Auth->loggedIn());
+        $this->set('userid', $this->Auth->user('user_id'));
         $this->Auth->allow('login', 'logout', 'add');
     }
 

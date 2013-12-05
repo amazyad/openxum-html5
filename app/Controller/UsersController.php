@@ -129,6 +129,6 @@ class UsersController extends AppController
 
     public function modeDiff()
     {
-         $this->set('parties', $this->Partie->find('all',array('conditions' => array('game_id' => 1), 'recursive' => 1)));
+         $this->set('parties', $this->Partie->find('all',array('conditions' => array('game_id' => 1, 'OR' => array('user_id_white' => $this->Auth->user('user_id'), 'user_id_black' => $this->Auth->user('user_id'))), 'recursive' => 1)));
     }
 }
