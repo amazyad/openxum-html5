@@ -122,4 +122,13 @@ class UsersController extends AppController
             }
         }
     }
+
+    public function ranking(){
+
+       $this->User->id = $id;
+       $user=$this->User->find('all');
+       $this->set('user', $user);
+
+    }
+
 }

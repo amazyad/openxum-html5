@@ -62,7 +62,7 @@
                 </li>
                 <li>
                     <?php
-                    echo $this->Html->link(__('Ranking'), array('controller' => 'pages', 'action' => 'display', 'ranking'), array("data-icon" => "grid"));
+                    echo $this->Html->link(__('Ranking'), array('controller' => 'users', 'action' => 'ranking'), array("data-icon" => "grid"));
                     ?>
                 <li><a href="#" data-icon="info">Help</a></li>
                 <li>
